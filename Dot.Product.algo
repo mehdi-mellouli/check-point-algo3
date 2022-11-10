@@ -1,0 +1,76 @@
+// USING PROCEDURE
+
+PROCEDURE dot_product(V1,V2)
+VAR
+v1,v2 : ARRAY_OF FLOAT [n];
+i : INTEGER :=0;
+ps : FLOAT :=0;
+BEGIN
+FOR i FROM 0 TO n-1   DO
+    ps := ps + V1[i] * V2[i];
+END_FOR    
+END
+
+ALGORITHM Dot.product
+VAR
+V1 : ARRAY_OF FLOAT[n];
+V2 : ARRAY_OF FLOAT[n];
+i : INTEGER; 
+ps : FLOAT := 0;
+n : INTEGER;
+BEGIN
+    write("write the size of two vectors");
+    read(n);
+    FOR i FROM 0 TO n-1  DO
+        write("write the element of the first vector V1",i+1 );
+        read(V1[i]);
+        write("write the element of the second vector V2",i+1 );
+        read(V2[i]);
+    END_FOR
+    dot_product(ps,V1,V2);
+    //IF ORTHOGONAL
+    IF (ps=0) THEN
+        write("The two vectors are orthogonal");
+    ELSE
+        write("The two vectors are not orthogonal");
+    END_IF
+END
+
+//USING FUNCTION
+
+FUNCTION dot_product(V1,V2) : FLOAT
+VAR
+V1 : ARRAY_OF FLOAT[n];
+V2 : ARRAY_OF FLOAT[n];
+n : INTEGER := 0;
+ps : FLOAT := 0;
+BEGIN
+    FOR i FROM 0 TO n-1  DO
+    ps := ps + V1[i] * V2[i];
+    END_FOR    
+    RETURN ps ;
+END
+
+ALGORITHM Dot.product
+VAR
+V1 : ARRAY_OF FLOAT[n];
+V2 : ARRAY_OF FLOAT[n];
+i : INTEGER; 
+n : INTEGER;
+BEGIN
+    write("write the size of two vectors");
+    read(n);
+    FOR i FROM 0 TO n-1  DO
+        write("write the element of the first vector V1",i+1);
+        read(V1[i]);
+        write("write the element of the second vector V2",i+1);
+        read(V2[i]);
+    END_FOR
+    
+    // IF ORTHOGONAL
+    IF (dot_product(V1,V2) = 0) THEN
+        write("The two vectors are orthogonal");
+    ELSE
+        write("The two vectors are not orthogonal");
+    END_IF
+END
